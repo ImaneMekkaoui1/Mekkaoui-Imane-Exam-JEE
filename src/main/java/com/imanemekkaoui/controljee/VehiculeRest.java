@@ -1,25 +1,34 @@
 package com.imanemekkaoui.controljee;
 
-
 import com.imanemekkaoui.controljee.dtos.VehiculeDTO;
 import com.imanemekkaoui.controljee.services.LocationVehiculeService;
-import lombok.RequiredArgsConstructor;
-
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/api/vehicules")
+@CrossOrigin(origins = "http://localhost:4200")
 public class VehiculeRest {
-    private LocationVehiculeService locationVehiculeService;
 
-    public VehiculeRest(LocationVehiculeService service) {
-        this.locationVehiculeService = service;
+    private final LocationVehiculeService locationVehiculeService;
+
+    public VehiculeRest(LocationVehiculeService locationVehiculeService) {
+        this.locationVehiculeService = locationVehiculeService;
     }
 
-    @GetMapping("/vehicules")
+    @GetMapping
     public List<VehiculeDTO> getVehicules() {
         return locationVehiculeService.listVehicules();
+    }
+
+    @GetMapping("/{id}")
+    public VehiculeDTO getVehicule(@PathVariable Long id) {
+        return locationVehiculeService.getVehicule(id);
+    }
+
+    @PostMapping
+    public VehiculeDTO saveVehicule(@RequestBody VehiculeDTO dto) {
+        return locationVehiculeService.saveVehicule(dto);
     }
 }

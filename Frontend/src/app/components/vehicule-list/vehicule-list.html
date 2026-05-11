@@ -1,0 +1,32 @@
+<div class="container mt-4">
+  <div class="card shadow">
+    <div class="card-header bg-primary text-white">
+      <h4>Liste des Véhicules</h4>
+    </div>
+    <div class="card-body">
+      <div *ngIf="errorMessage" class="alert alert-danger">{{errorMessage}}</div>
+      
+      <table class="table table-hover" *ngIf="vehicules$ | async as list">
+        <thead class="table-light">
+          <tr>
+            <th>ID</th><th>Marque</th><th>Modèle</th><th>Matricule</th><th>Prix/Jour</th><th>Statut</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let v of list">
+            <td>{{v.id}}</td>
+            <td>{{v.marque}}</td>
+            <td>{{v.modele}}</td>
+            <td>{{v.matricule}}</td>
+            <td>{{v.prixParJour}} DH</td>
+            <td>
+              <span class="badge" [ngClass]="{'bg-success': v.statut==='Disponible', 'bg-warning': v.statut==='Loué', 'bg-danger': v.statut==='EnMaintenance'}">
+                {{v.statut}}
+              </span>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
