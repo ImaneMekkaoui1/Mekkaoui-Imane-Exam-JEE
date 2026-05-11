@@ -10,18 +10,16 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/vehicules")
-@RequiredArgsConstructor
+@RequestMapping("/api")
 public class VehiculeRest {
-    private final LocationVehiculeService service;
+    private LocationVehiculeService locationVehiculeService;
 
-    @GetMapping
-    public List<VehiculeDTO> all(){
-        return service.listVehicules();
+    public VehiculeRest(LocationVehiculeService service) {
+        this.locationVehiculeService = service;
     }
 
-    @PostMapping
-    public VehiculeDTO save(@RequestBody VehiculeDTO dto){
-        return service.saveVehicule(dto);
+    @GetMapping("/vehicules")
+    public List<VehiculeDTO> getVehicules() {
+        return locationVehiculeService.listVehicules();
     }
 }

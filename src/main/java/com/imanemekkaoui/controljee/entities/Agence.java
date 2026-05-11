@@ -5,10 +5,8 @@ import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
 import java.util.Date;
 import java.util.List;
-
 @Entity
 @Data
 @AllArgsConstructor
@@ -20,7 +18,6 @@ public class Agence {
     private String adresse;
     private String ville;
     private String telephone;
-
     @OneToMany(mappedBy = "agence")
     private List<Vehicule> vehicules;
 }
