@@ -1,9 +1,7 @@
 package com.imanemekkaoui.controljee.entities;
 
 import com.imanemekkaoui.controljee.enums.TypeMoto;
-import jakarta.persistence.Entity;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;

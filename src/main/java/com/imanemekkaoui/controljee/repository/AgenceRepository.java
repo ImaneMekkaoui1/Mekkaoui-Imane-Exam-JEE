@@ -1,3 +1,8 @@
 package com.imanemekkaoui.controljee.repository;
 
-public interface AgenceRepository extends JpaRepository<Agence,Long> {}
+import com.imanemekkaoui.controljee.entities.Agence;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface AgenceRepository extends JpaRepository<Agence,Long> {
+
+}

@@ -8,4 +8,7 @@ public class LocationDTO {
     private LocalDate dateFin;
     private double montant;
     private Long vehiculeId;
+
+    public LocationDTO(Long id, LocalDate dateDebut, LocalDate dateFin, double montant, Long aLong) {
+    }
 }
